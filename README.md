@@ -16,12 +16,15 @@ Aplicación CRUD (Create, Read, Update, Delete) completa desarrollada con el sta
 ### ✨ Características
 
 - ✅ **CRUD completo** de productos
+- ✅ **CRUD completo** de categorías
+- ✅ **Relación Producto-Categoría** (Many-to-One)
 - ✅ **Autenticación** con Laravel Breeze
 - ✅ **SPA** (Single Page Application) con Inertia.js
 - ✅ **Tipado estático** con TypeScript
 - ✅ **UI moderna** con Tailwind CSS
-- ✅ **Modales** para crear/editar productos
+- ✅ **Modales** para crear/editar productos y categorías
 - ✅ **Validación** en frontend y backend
+- ✅ **Relaciones Eloquent** implementadas
 
 ## 🚀 Instalación Rápida
 
@@ -56,24 +59,37 @@ Visita `http://localhost:8000` 🎉
 laracrud/
 ├── app/
 │   ├── Http/Controllers/
-│   │   └── ProductController.php    # Controlador CRUD
+│   │   ├── ProductController.php    # Controlador CRUD de productos
+│   │   └── CategoryController.php   # Controlador CRUD de categorías
 │   └── Models/
-│       └── Product.php              # Modelo Eloquent
+│       ├── Product.php              # Modelo Eloquent - Producto
+│       └── Category.php             # Modelo Eloquent - Categoría
 ├── database/
 │   └── migrations/
-│       └── create_products_table.php
+│       ├── create_products_table.php
+│       ├── create_categories_table.php
+│       └── add_category_id_to_products_table.php
 ├── resources/js/
-│   ├── Components/Products/
-│   │   ├── ProductTable.tsx         # Tabla de productos
-│   │   └── ProductModal.tsx         # Modal crear/editar
-│   ├── Pages/Products/
-│   │   └── Index.tsx                # Página principal
+│   ├── Components/
+│   │   ├── Products/
+│   │   │   ├── ProductTable.tsx     # Tabla de productos
+│   │   │   └── ProductModal.tsx     # Modal crear/editar producto
+│   │   └── Categories/
+│   │       ├── CategoryTable.tsx    # Tabla de categorías
+│   │       └── CategoryModal.tsx    # Modal crear/editar categoría
+│   ├── Pages/
+│   │   ├── Products/
+│   │   │   └── Index.tsx            # Página de productos
+│   │   └── Categories/
+│   │       └── Index.tsx            # Página de categorías
 │   └── types/
 │       └── index.d.ts               # Tipos TypeScript
 ├── routes/
 │   └── web.php                      # Rutas de la aplicación
 └── docs/
     ├── GUIA_DESARROLLO.md           # Guía paso a paso
+    ├── PRACTICA_CRUD.md             # Especificación del proyecto
+    ├── REFLEXION.md                 # Resumen reflexivo
     └── presentacion.html            # Presentación Reveal.js
 ```
 

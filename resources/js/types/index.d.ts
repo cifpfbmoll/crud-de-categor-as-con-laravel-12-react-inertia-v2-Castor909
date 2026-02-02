@@ -16,6 +16,22 @@ export interface Product {
     price: number;
     stock: number;
     status: 'active' | 'inactive' | 'discontinued';
+    category_id?: number | null;
+    category?: Category;
+    created_at: string;
+    updated_at: string;
+}
+
+/**
+ * Tipo para representar una Categoría del CRUD.
+ * Refleja la estructura de la tabla 'categories' en la base de datos.
+ */
+export interface Category {
+    id: number;
+    name: string;
+    description: string | null;
+    color: string | null;
+    active: boolean;
     created_at: string;
     updated_at: string;
 }
@@ -25,6 +41,13 @@ export interface Product {
  */
 export interface ProductsPageProps extends Record<string, unknown> {
     products: Product[];
+}
+
+/**
+ * Props para las páginas con categorías.
+ */
+export interface CategoriesPageProps extends Record<string, unknown> {
+    categories: Category[];
 }
 
 export type PageProps<

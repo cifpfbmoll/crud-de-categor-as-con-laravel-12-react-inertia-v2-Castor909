@@ -1,18 +1,23 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, router } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
-import { Product, PageProps, ProductsPageProps } from '@/types';
+import { Product, Category, PageProps, ProductsPageProps } from '@/types';
 import ProductTable from '@/Components/Products/ProductTable';
 import ProductModal from '@/Components/Products/ProductModal';
 import PrimaryButton from '@/Components/PrimaryButton';
+
+interface ProductsPageWithCategories extends ProductsPageProps {
+    categories: Category[];
+}
 
 /**
  * Página principal de Productos.
  * Muestra una tabla con todos los productos y permite operaciones CRUD.
  * 
  * @param products - Array de productos recibidos desde el backend via Inertia
+ * @param categories - Array de categorías para el selector
  */
-export default function Index({ auth, products }: PageProps<ProductsPageProps>) {
+export default function Index({ auth, products, categories = [] }: PageProps<ProductsPageWithCategories>) {
     // Estado local para manejar los productos (permite actualizaciones optimistas)
     const [data, setData] = useState<Product[]>(products);
     
@@ -109,6 +114,7 @@ export default function Index({ auth, products }: PageProps<ProductsPageProps>) 
                 onClose={() => setIsCreateModalOpen(false)}
                 onSuccess={handleProductCreate}
                 mode="create"
+                categories={categories}
             />
 
             {/* Modal para editar producto */}
@@ -121,6 +127,7 @@ export default function Index({ auth, products }: PageProps<ProductsPageProps>) 
                 onSuccess={handleProductUpdate}
                 mode="edit"
                 product={selectedProduct}
+                categories={categories}
             />
         </AuthenticatedLayout>
     );
