@@ -134,5 +134,3 @@ I would recommend this stack for:
 - **Teams requiring type safety** in both backend and frontend
 - **Applications with complex data relationships** where Eloquent shines
 - **SPAs that need** a structured backend without maintaining a separate REST API
-
-The video demonstration shows this in practice: creating a "Green" category, assigning it a color code, then assigning it to a banana product—all with full type safety and validation.
